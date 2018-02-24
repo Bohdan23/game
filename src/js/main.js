@@ -32,7 +32,7 @@ $('.box-wrapper').on('click', function() {
 		$('.box-wrapper.rotated').removeClass('rotated');
 		gameStatus('Ви програли! Все починайте заново!');
 		flag = 0;
-		location.reload();
+		
 	}
 
 });
