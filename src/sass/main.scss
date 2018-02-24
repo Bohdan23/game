@@ -1,0 +1,26 @@
+@import "helpers/_reset.scss";
+@import "helpers/_fonts.scss";
+@import "helpers/_variables.scss";
+
+* {
+	box-sizing: border-box;
+}
+
+body {
+	min-width: 320px;
+	font-family: opensans;
+	font-size: 13px;
+	font-weight: 400;
+}
+
+.container {
+	&-main {
+		border: 1px solid red;
+
+		width: 100%;
+		max-width: 1500px;
+		margin: 0 auto;
+	}
+}
+
+@import "parts/_boxes.scss"
