@@ -26,10 +26,15 @@
 	}
 }
 
+.hint-wrapper {
+	text-align: center;
+	margin-top: 10px;
+}
+
 .boxes-wrapper {
 	/*border: 1px solid brown;*/
 	max-width: 1200px;
-	margin: 100px auto 0 auto;
+	margin: 50px auto 0 auto;
 	.box-wrapper {
 		/*border: 1px solid green;*/
 		
@@ -39,6 +44,21 @@
 		margin: 10px;
 		transform-style: preserve-3d;
 		transition: 1s ease;
+		position: relative;
+		&.hint {
+			&:after {
+				content: attr(data-color);
+				font-size: 20px;
+				color: #fff;
+				display: block;
+				width: 50px;
+				height: 50px;
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				transform: translate(-50%, -50%);
+			}
+		}
 		&.rotated {
 			.box-face {
 				transform: rotateY(0deg);
@@ -48,7 +68,33 @@
 			}
 		}
 		&.hidden {
-			display: none;
+			width: 0;
+			height: 0;
+			margin: 0;
+			position: absolute;
+		}
+		&.active {
+			border: 2px solid yellow;
+		}
+		&.red {
+			.box-face {
+				background: red;
+			}
+		}
+		&.blue {
+			.box-face {
+				background: blue;
+			}
+		}
+		&.brown {
+			.box-face {
+				background: brown;
+			}
+		}
+		&.green {
+			.box-face {
+				background: green;
+			}
 		}
 		.box {
 			width: 100%;
@@ -67,17 +113,4 @@
 			transform: rotateY(0deg);
 		}
 	}
-}
-
-.red {
-	background: red;
-}
-.blue {
-	background: blue;
-}
-.brown {
-	background: brown;
-}
-.green {
-	background: green;
 }

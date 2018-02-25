@@ -1,38 +1,71 @@
-var dataBase = 1,
-	flag = 0, // click was or not
-	gamelevel = 1;
-
-function gameStatus(text) {
-	$('.game-status').text(text);
-}
-function gameLevel(text) {
-	$('.game-level').text('Рівень №' + text);
-}
-
-$('.box-wrapper').on('click', function() {
-	var $$ = $(this);
-	var index = $$.data('index');
-	$$.addClass('rotated');
-
-	if (flag == 0) {
-		flag = 1;
-		dataBase = index;
-		gameStatus(' ');
-	} else if (flag == 1 && dataBase == index) {
-		$('.box-wrapper[data-index='+dataBase+']').toggle();
-		gameStatus('Рівень пройдено');
-		gamelevel = gamelevel + 1;
-		flag = 0;
-		gameLevel(gamelevel);
-		if (gamelevel == 5) {
-			gameStatus('ВИ ПЕРЕМОЖЕЦЬ!) ЗАБЕРІТЬ ВАШІ ПРИЗОВІ НА МАРКА ВОВЧКА 16!!!!!');
-			gameLevel('');
-		}
-	} else if (flag == 1 && dataBase != index) {
-		$('.box-wrapper.rotated').removeClass('rotated');
-		gameStatus('Ви програли! Все починайте заново!');
-		flag = 0;
-		
+$(document).ready(function() {
+	var boxObj = {
+		color: null,
+		firstIndex: null,
+		secondIndex: null,
+		thirdIndex: null,
+		flag: 0,
+		level: 1
 	}
 
+	$('input[type=checkbox]').on('change', function() {
+		$('.box-wrapper').toggleClass('hint');
+	});
+
+	$('.game-level').text('Рівень №'+boxObj.level);
+
+	$('.box-wrapper').on('click', function() {
+		var $$ = $(this);
+		$$.addClass('rotated');
+		var index = $$.data('index');
+		var color = $$.data('color');
+		if (boxObj.flag == 0) {
+			// if first click
+			boxObj.color = color;
+			boxObj.firstIndex = index;
+			boxObj.flag = 1;
+			$$.addClass('active');
+		} else if (boxObj.flag == 1) {
+			// if second click
+			if (index == boxObj.firstIndex) {
+				$('.game-status').text('Не клікайте будь ласка по одному і тому ж квадраті!!!');
+			} else if (index != boxObj.firstIndex && color != boxObj.color) {
+				boxObj.flag = 2;
+				boxObj.secondIndex = index;
+				$('.game-status').text('Вам не пощастило! Але у Вас є ще ОДИН шанс!)');
+				$$.addClass('active');
+			} else if (index != boxObj.firstIndex && color == boxObj.color) {
+				$('.game-status').text('Ви перейшли до наступного рівня!');
+				boxObj.level = boxObj.level + 1;
+				$('.game-level').text('Рівень №'+boxObj.level);
+				$('.box-wrapper.'+boxObj.color).addClass('hidden');
+				boxObj.flag = 0;
+				boxObj.firstIndex = null;
+				boxObj.secondIndex = null;
+				boxObj.color = null;
+			}
+		} else if (boxObj.flag == 2) {
+			// if third click
+			if (index == boxObj.firstIndex || index == boxObj.secondIndex) {
+				$('.game-status').text('Не клікайте будь ласка по одному і тому ж квадраті!!!');
+			} else if (index != boxObj.firstIndex && index != boxObj.secondIndex && color != boxObj.color) {
+				boxObj.flag = 0;
+				boxObj.firstIndex = null;
+				boxObj.secondIndex = null;
+				boxObj.color = null;
+				$('.game-status').text('Ви програли!)');
+				$('.box-wrapper').removeClass('active rotated clicked hidden');
+			} else if (index != boxObj.firstIndex && index != boxObj.secondIndex && color == boxObj.color) {
+				$('.game-status').text('Ви перейшли до наступного рівня!');
+				boxObj.level = boxObj.level + 1;
+				$('.game-level').text('Рівень №'+boxObj.level);
+				$('.box-wrapper.' + boxObj.color).addClass('hidden');
+				$('.box-wrapper').removeClass('active rotated clicked');
+				boxObj.flag = 0;
+				boxObj.firstIndex = null;
+				boxObj.secondIndex = null;
+				boxObj.color = null;
+			}
+		}
+	});
 });
