@@ -67,5 +67,9 @@ $(document).ready(function() {
 				boxObj.color = null;
 			}
 		}
+
+		if (boxObj.level == 5) {
+			$('.game-status').text('СОЛЬЧИК ВИГРАВ!!!!!)))');
+		}
 	});
 });
