@@ -20,8 +20,8 @@ $(document).ready(function() {
         	animation: {
 	            open: "noty_effects_open",
 	            close: "noty_effects_close"
-        	}
-        	// timeout: 4000,
+        	},
+        	timeout: 4000,
 		}).show();
 	}
 

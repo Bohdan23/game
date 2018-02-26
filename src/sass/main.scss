@@ -85,6 +85,7 @@ body {
 		transform: scale(0);
 		background: rgba(0,0,0,.5);
 		transition: .5s ease;
+		z-index: 9999;
 		&.active {
 			transform: scale(1);
 			opacity: 1;
