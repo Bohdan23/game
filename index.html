@@ -4,20 +4,20 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Game</title>
+	<link rel="stylesheet" href="web/css/vendor/noty.css">
 	<link rel="stylesheet" href="web/css/main.css">
 </head>
 <body>
 	
 	<div class="container-main">
 		<div class="title-wrapper">
-			<p class="main-title">Game boxes</p>
-			<p class="game-status">Грайте із задоволенням!</p>
-			<p class="game-level">Рівень 1</p>
+			<p class="main-title">Boxes</p>
+			<p class="game-level">Level 1</p>
+			<!-- <p class="hint-wrapper">
+				<label for="hint">Включити підказку для перевірки роботи гри</label>
+				<input type="checkbox" id="hint">
+			</p> -->
 		</div>
-		<p class="hint-wrapper">
-			<label for="hint">Включити підказку для перевірки роботи гри</label>
-			<input type="checkbox" id="hint">
-		</p>
 		
 		<div class="boxes-wrapper">
 			<div class="box-wrapper brown" data-color="brown" data-index="1">
@@ -28,19 +28,19 @@
 				<div class="box box-face"></div>
 				<div class="box box-backface"></div>
 			</div>
-			<div class="box-wrapper blue" data-color="blue" data-index="3">
+			<div class="box-wrapper violet" data-color="violet" data-index="3">
 				<div class="box box-face"></div>
 				<div class="box box-backface"></div>
 			</div>
-			<div class="box-wrapper brown" data-color="brown" data-index="4">
+			<div class="box-wrapper orange" data-color="orange" data-index="4">
 				<div class="box box-face"></div>
 				<div class="box box-backface"></div>
 			</div>
-			<div class="box-wrapper red" data-color="red" data-index="5">
+			<div class="box-wrapper blue" data-color="blue" data-index="5">
 				<div class="box box-face"></div>
 				<div class="box box-backface"></div>
 			</div>
-			<div class="box-wrapper green" data-color="green" data-index="6">
+			<div class="box-wrapper brown" data-color="brown" data-index="6">
 				<div class="box box-face"></div>
 				<div class="box box-backface"></div>
 			</div>
@@ -48,16 +48,40 @@
 				<div class="box box-face"></div>
 				<div class="box box-backface"></div>
 			</div>
-			<div class="box-wrapper blue" data-color="blue" data-index="8">
+			<div class="box-wrapper green" data-color="green" data-index="8">
+				<div class="box box-face"></div>
+				<div class="box box-backface"></div>
+			</div>
+			<div class="box-wrapper red" data-color="red" data-index="9">
+				<div class="box box-face"></div>
+				<div class="box box-backface"></div>
+			</div>
+			<div class="box-wrapper blue" data-color="blue" data-index="10">
+				<div class="box box-face"></div>
+				<div class="box box-backface"></div>
+			</div>
+			<div class="box-wrapper violet" data-color="violet" data-index="11">
+				<div class="box box-face"></div>
+				<div class="box box-backface"></div>
+			</div>
+			<div class="box-wrapper orange" data-color="orange" data-index="12">
 				<div class="box box-face"></div>
 				<div class="box box-backface"></div>
 			</div>
 		</div>
 	</div>
 
+	<div class="modal-wrapper">
+		<div class="modal-inner">
+			<p>Game over</p>
+			<a href="javascript:void(0)" class="start">Start new game</a>
+		</div>
+	</div>
+
 
 
 	<script src="web/js/vendor/jquery-2.1.1.min.js"></script>
+	<script src="web/js/vendor/noty.min.js"></script>
 	<script src="web/js/main.js"></script>
 </body>
 </html>

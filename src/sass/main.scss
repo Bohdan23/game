@@ -11,6 +11,50 @@ body {
 	font-family: opensans;
 	font-size: 13px;
 	font-weight: 400;
+	background-color: #F6F4F1;
+    /*background-color: #d7ccc8; */
+}
+
+#noty_layout__topRight {
+	@include mx(768) {
+	    width: 225px;
+    }
+}
+
+.noty_body {
+    /*background: #616161;*/
+    background-color: #23d160;
+    /*background-image: linear-gradient(141deg, #12af2f 0%, #23d160 71%, #2ce28a 100%);*/
+    padding: 8px 30px 8px 8px;
+    line-height: 16px;
+    font-size: 13px;
+    color: #fff;
+    border-radius: 3px;
+    margin: 3px 0;
+    font-family: 'opensans';
+	font-weight: 600;
+    @include mx(1080) {
+    	padding: 7px 29px 7px 7px;
+	    font-size: 12px;
+    }
+    @include mx(768) {
+	    font-size: 11px;
+    }
+    @include mx(480) {
+    	padding: 6px 29px 6px 6px;
+	    font-size: 10px;
+    }
+}
+.noty_close_button {
+	top: 50%;
+	transform: translate(0, -50%);
+	color: #fff;
+    background-color: rgba(0,0,0,.2);
+	font-size: 15px;
+	right: 4px;
+	@include mx(1080) {
+	    font-size: 13px;
+    }
 }
 
 .container {
@@ -20,6 +64,71 @@ body {
 		width: 100%;
 		max-width: 1500px;
 		margin: 0 auto;
+		
+		@include mx(1280) {
+			padding: 0 30px;
+		}
+		@include mx(768) {
+			padding: 0 20px;
+		}
+	}
+}
+
+.modal {
+	&-wrapper {
+		position: fixed;
+		width: 100%;
+		height: 100%;
+		top: 0;
+		left: 0;
+		opacity: 0;
+		transform: scale(0);
+		background: rgba(0,0,0,.5);
+		transition: .5s ease;
+		&.active {
+			transform: scale(1);
+			opacity: 1;
+		}
+	}
+	&-inner {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		background: rgba(176, 190, 197, .85);
+	    width: 100%;
+	    max-width: 350px;
+	    text-align: center;
+	    padding: 30px;
+	    border-radius: 10px;
+	    p {
+	    	font-family: 'crushed';
+	    	font-size: 25px;
+	    	margin-bottom: 30px;
+	    }
+	    a {
+	    	text-decoration: none;
+	    	text-decoration: none;
+		    background: #ff7043;
+		    padding: 5px 10px;
+		    border-radius: 3px;
+		    color: #fff;
+		    transition: .4s ease;
+	    }
+	    @include mn(768) {
+	    	a:hover {
+		    	background: #e46037;
+		    }
+	    }
+	    @include mx(480) {
+	    	max-width: 290px;
+			p {
+				font-size: 19px;
+			}
+			a {
+				font-size: 12px;
+			}
+	    }
 	}
 }
 

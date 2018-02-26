@@ -1,28 +1,41 @@
+@import "../helpers/_fonts.scss";
+@import "../helpers/_variables.scss";
+
 .title-wrapper {
-	/*border: 1px solid blue;*/
-
 	text-align: center;
-
 	.main-title {
-		/*border: 1px solid green;*/
-
 		color: orange;
 		font-size: 50px;
 		text-transform: uppercase;
-	}
-
-	.game-status {
-		color: blue;
-		font-weight: 600;
-		margin-top: 30px;
-		text-transform: uppercase;
-		font-size: 25px;
+		font-family: 'crushed';
+		margin-top: 50px;
 	}
 	.game-level {
 		color: green;
 		font-weight: 700;
-		font-size: 22px;
-		margin-top: 15px;
+		font-size: 32px;
+		margin-top: 30px;
+		font-family: 'brooke';
+	}
+	@include mx(768) {
+		.main-title {
+			font-size: 35px;
+			margin-top: 40px;
+		}
+		.game-level {
+			font-size: 28px;
+			margin-top: 25px;
+		}
+	}
+	@include mx(480) {
+		.main-title {
+			font-size: 28px;
+			margin-top: 30px;
+		}
+		.game-level {
+			font-size: 24px;
+			margin-top: 20px;
+		}
 	}
 }
 
@@ -33,18 +46,38 @@
 
 .boxes-wrapper {
 	/*border: 1px solid brown;*/
+	display: flex;
+    flex-wrap: wrap;
 	max-width: 1200px;
 	margin: 50px auto 0 auto;
+	box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16), 0 2px 10px 0 rgba(0,0,0,0.12);
+	border-radius: 2px;
+	/*background-color: #F0E5D7;*/
+    background-color: #ffdd57;
+	background-image: linear-gradient(141deg, #ffaf24 0%, #ffdd57 71%, #fffa70 100%);
 	.box-wrapper {
 		/*border: 1px solid green;*/
 		
-		width: 23%;
-		height: 250px;
-		display: inline-block;
-		margin: 10px;
+	    width: 14.65%;
+	    height: 170px;
+	    display: inline-block;
+	    margin: 1%;
 		transform-style: preserve-3d;
-		transition: 1s ease;
+		transition: all .6s ease-in-out;
 		position: relative;
+		opacity: 1;
+		cursor: pointer;
+		@include mn(768) {
+			&:hover {
+				transform: scale(1.03);
+			}
+		}
+		&.active {
+			&:hover {
+				transform: scale(1);
+				cursor: not-allowed;
+			}	
+		}
 		&.hint {
 			&:after {
 				content: attr(data-color);
@@ -68,32 +101,39 @@
 			}
 		}
 		&.hidden {
-			width: 0;
-			height: 0;
-			margin: 0;
-			position: absolute;
+			transform: scale(0);
+			opacity: 0;
 		}
-		&.active {
-			border: 2px solid yellow;
+		&.violet {
+			.box-face {
+				background-color: #ba68c8;
+			}
 		}
 		&.red {
 			.box-face {
-				background: red;
+				background-color: #ff3860;
 			}
 		}
 		&.blue {
 			.box-face {
-				background: blue;
+				background-color: #209cee;
+			    background-image: linear-gradient(141deg, #04a6d7 0%, #209cee 71%, #3287f5 100%);
 			}
 		}
 		&.brown {
 			.box-face {
-				background: brown;
+				background-color: #8d6e63;
 			}
 		}
 		&.green {
 			.box-face {
-				background: green;
+				background-color: #23d160;
+				background-image: linear-gradient(141deg, #12af2f 0%, #23d160 71%, #2ce28a 100%);
+			}
+		}
+		&.orange {
+			.box-face {
+				background-color: #ffc107;
 			}
 		}
 		.box {
@@ -102,15 +142,58 @@
 			position: absolute;
 			top: 0;
 			left: 0;
-			transition: 1s ease;
+			transition: .6s ease;
 			backface-visibility: hidden;
+			border-radius: 3px;
 		}
 		.box-face {
 			transform: rotateY(180deg);
+			box-shadow: inset 0px 0px 26px 3px rgba(0,0,0,0.75);
 		}
 		.box-backface {
-			background: #000;
+			background-color: #3f3939;
+			background-image: url('../img/paw.svg');
+			background-repeat: no-repeat;
+			background-size: 40px;
+			background-position: 50% 50%;
 			transform: rotateY(0deg);
+		}
+	}
+	@include mx(1280) {
+		.box-wrapper {
+		    height: 145px;
+		    margin: 1%;
+		}
+	}
+	@include mx(1080) {
+		.box-wrapper {
+		    height: 130px;
+		    margin: 1%;
+		}
+	}
+	@include mx(924) {
+		.box-wrapper {
+		    width: 23%;
+		}
+	}
+	@include mx(768) {
+		margin: 40px auto 0 auto;
+	}
+	@include mx(624) {
+		.box-wrapper {
+		    height: 100px;
+		    .box-backface {
+		    	background-size: 30px;
+		    }
+		}
+	}
+	@include mx(480) {
+		.box-wrapper {
+		    width: 31.32%;
+		    height: 85px;
+		    .box-backface {
+		    	background-size: 25px;
+		    }
 		}
 	}
 }

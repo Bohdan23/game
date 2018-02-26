@@ -59,9 +59,18 @@ gulp.task('fonts:build', function () {
 
 gulp.task('libsjs:build', function () {
     return gulp.src([
-        'node_modules/jquery/dist/cdn/jquery-2.1.1.min.js'
+        'node_modules/jquery/dist/cdn/jquery-2.1.1.min.js',
+        'node_modules/noty/lib/noty.min.js'
         ])
         .pipe(gulp.dest(path.web.libsjs))
+});
+
+gulp.task('libscss:build', function () {
+    return gulp.src([
+        'node_modules/noty/lib/noty.css'
+        ])
+        .pipe(cssnano())
+        .pipe(gulp.dest(path.web.libscss))
 });
 
 gulp.task('libssass:build', function () {
@@ -72,7 +81,8 @@ gulp.task('libssass:build', function () {
 });
 
 gulp.task('libs:build', gulp.series([
-     'libsjs:build'
+     'libsjs:build',
+     'libscss:build'
 ]));
 
 gulp.task('watch', function () {
