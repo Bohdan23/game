@@ -21,7 +21,7 @@ $(document).ready(function() {
 	            open: "noty_effects_open",
 	            close: "noty_effects_close"
         	},
-        	timeout: 4000,
+        	timeout: 4000
 		}).show();
 	}
 
@@ -40,6 +40,7 @@ $(document).ready(function() {
 		reset();
 		boxObj.level = 1;
 		boxObj.gameOver = false;
+		boxObj.hidden = 0;
 		$('.game-level').text('Level '+boxObj.level);
 		$('.box-wrapper').removeClass('active rotated hidden');
 		if (boxObj.gameOver == false){
@@ -92,6 +93,7 @@ $(document).ready(function() {
 			} else if (index != boxObj.firstIndex && index != boxObj.secondIndex && color != boxObj.color) {
 
 				boxObj.gameOver = true;
+				boxObj.hidden = 0;
 
 			} else if (index != boxObj.firstIndex && index != boxObj.secondIndex && color == boxObj.color) {
 

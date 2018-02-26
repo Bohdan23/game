@@ -30,7 +30,10 @@ var path = {
 gulp.task('style:build', function(){
   return gulp.src(path.src.sass)
     .pipe(sass())
-    .pipe(autoprefixer())
+    .pipe(autoprefixer({
+        browsers: ['last 4 versions'],
+        cascade: false
+    }))
     .pipe(cssnano())
     .pipe(gulp.dest(path.web.css))
 });
