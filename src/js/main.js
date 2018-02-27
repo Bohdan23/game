@@ -6,7 +6,6 @@ $(document).ready(function() {
 		flag: 0,
 		level: 1,
 		gameOver: false,
-		win: false,
 		hidden: 0
 	};
 	var boxesLength = $('.box-wrapper').length;
@@ -53,7 +52,7 @@ $(document).ready(function() {
 		var $$ = $(this);
 		$$.addClass('rotated');
 		var index = $$.data('index');
-		var color = $$.data('color');
+		var color = $$.data('color'); 
 
 		if (boxObj.flag == 0) {
 			// if first click
@@ -82,6 +81,7 @@ $(document).ready(function() {
 				$('.box-wrapper.'+boxObj.color).addClass('hidden');
 				reset();
 				boxObj.hidden = boxObj.hidden + 2;
+
 				
 			}
 		} else if (boxObj.flag == 2) {
@@ -94,6 +94,7 @@ $(document).ready(function() {
 
 				boxObj.gameOver = true;
 				boxObj.hidden = 0;
+				message('Ви програли!');
 
 			} else if (index != boxObj.firstIndex && index != boxObj.secondIndex && color == boxObj.color) {
 
@@ -110,12 +111,14 @@ $(document).ready(function() {
 
 		if (boxObj.hidden == boxesLength) {
 			$('.modal-wrapper').addClass('active');
-			$('.modal-wrapper').find('p').text('WINNER');
+			$('.modal-wrapper').find('p').text('Winner!!!');
 			$('.game-level').text('');
+			message('ПЕРЕМОГА!!!!');
 		}
 
 		if (boxObj.gameOver == true) {
 			$('.modal-wrapper').addClass('active');
+			$('.modal-wrapper').find('p').text('Game Over!');
 		} 
 	});
 });
